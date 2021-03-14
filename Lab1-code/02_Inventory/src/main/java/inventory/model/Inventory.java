@@ -111,6 +111,15 @@ public class Inventory {
         }
         return results;
     }
+
+    public ArrayList<Part> lookupPartById(int searchItemId) {
+        ArrayList<Part> results = new ArrayList<>();
+        for(Part p:allParts) {
+            if(p.getPartId() == searchItemId )
+                results.add(p);
+        }
+        return results;
+    }
     
     /**
      * Update part at given index

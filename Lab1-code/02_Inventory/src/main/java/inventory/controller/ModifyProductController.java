@@ -258,8 +258,9 @@ public class ModifyProductController implements Initializable, Controller {
     @FXML
     void handleSearchProduct(ActionEvent event) {
         String x = productSearchTxt.getText();
-        for(Part p: service.lookupPart(x))
-            addProductTableView.getSelectionModel().select(p);
+        ObservableList<Part> list = FXCollections.observableArrayList(service.lookupPart(x));
+        if(!service.lookupPart(x).isEmpty())
+            addProductTableView.setItems(list);
     }
 
 

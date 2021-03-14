@@ -73,7 +73,7 @@ public class InventoryRepository {
 	}
 
 	public void readProducts(){
-		ClassLoader classLoader = InventoryRepository.class.getClassLoader();
+		ClassLoader classLoader = getClass().getClassLoader();
 		File file = new File(classLoader.getResource(filename).getFile());
 
 		ObservableList<Product> listP = FXCollections.observableArrayList();
@@ -114,7 +114,7 @@ public class InventoryRepository {
 			ObservableList<Part> list= FXCollections.observableArrayList();
 			while (ids.hasMoreTokens()) {
 				String idP = ids.nextToken();
-				for (Part part:inventory.lookupPart(idP)) {
+				for (Part part:inventory.lookupPartById(Integer.parseInt(idP))) {
 					if (part != null)
 						list.add(part);
 				} ;

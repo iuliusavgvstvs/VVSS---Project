@@ -1,6 +1,8 @@
 
 package inventory.controller;
 
+import inventory.model.InhousePart;
+import inventory.model.OutsourcedPart;
 import inventory.model.Part;
 import inventory.model.Product;
 import inventory.service.InventoryService;
@@ -75,6 +77,12 @@ public class MainScreenController implements Initializable,Controller {
 
     @FXML
     private TableColumn<Product, Double> productsPriceCol;
+
+    @FXML
+    private TableColumn<InhousePart, Double> idMachine;
+
+    @FXML
+    private TableColumn<OutsourcedPart, Double> companyName;
     
     @FXML
     private TextField partsSearchTxt;
@@ -96,11 +104,14 @@ public class MainScreenController implements Initializable,Controller {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        System.out.println(rb);
         // Populate parts table view
         partsIdCol.setCellValueFactory(new PropertyValueFactory<>("partId"));
         partsNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         partsInventoryCol.setCellValueFactory(new PropertyValueFactory<>("inStock"));
         partsPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+        idMachine.setCellValueFactory(new PropertyValueFactory<>("machineId"));
+        companyName.setCellValueFactory(new PropertyValueFactory<>("companyName"));
 
         // Populate products table view
         productsIdCol.setCellValueFactory(new PropertyValueFactory<>("productId"));
@@ -201,9 +212,22 @@ public class MainScreenController implements Initializable,Controller {
     @FXML
     void handleModifyPart(ActionEvent event) throws IOException {
         modifyPart = partsTableView.getSelectionModel().getSelectedItem();
-        modifyPartIndex = service.getAllParts().indexOf(modifyPart);
-        
-        displayScene(event, "/fxml/ModifyPart.fxml");
+
+        System.out.println(modifyPart);
+        if(modifyPart != null) {
+            modifyPartIndex = service.getAllParts().indexOf(modifyPart);
+            displayScene(event, "/fxml/ModifyPart.fxml");
+        }
+        else
+        {
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.initModality(Modality.NONE);
+            alert.setTitle("Confirmation Needed");
+            alert.setHeaderText("Confirm Exit");
+            alert.setContentText("You need to select an part?");
+            alert.show();
+
+        }
     }
 
     /**
@@ -214,9 +238,19 @@ public class MainScreenController implements Initializable,Controller {
     @FXML
     void handleModifyProduct(ActionEvent event) throws IOException {
         modifyProduct = productsTableView.getSelectionModel().getSelectedItem();
-        modifyProductIndex = service.getAllProducts().indexOf(modifyProduct);
-        
-        displayScene(event, "/fxml/ModifyProduct.fxml");
+        if(modifyProduct != null) {
+            modifyProductIndex = service.getAllProducts().indexOf(modifyProduct);
+            displayScene(event, "/fxml/ModifyProduct.fxml");
+        }
+        else{
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.initModality(Modality.NONE);
+            alert.setTitle("Confirmation Needed");
+            alert.setHeaderText("Confirm Exit");
+            alert.setContentText("You need to select an product?");
+            alert.show();
+
+        }
     }
 
     /**
