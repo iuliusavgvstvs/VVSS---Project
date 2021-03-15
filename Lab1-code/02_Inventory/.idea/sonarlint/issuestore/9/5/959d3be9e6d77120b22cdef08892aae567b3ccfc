@@ -1,14 +1,11 @@
 
-4squid:S1643”"Use a StringBuilder instead.(ŠÑ‡à
-csquid:S2095Q"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(ãÈˆ¦
-csquid:S2095"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(ãÈˆ¦
-dsquid:S2095ˆ"LUse try-with-resources or close this "BufferedWriter" in a "finally" clause.(ù»ı
-?squid:S1148%"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-?squid:S1148'"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-?squid:S1148Z"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-?squid:S1148\"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-@squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-[squid:S2147&"DCombine this catch with the one at line 36, which has the same body.(ï­£Ä
-[squid:S2147["DCombine this catch with the one at line 89, which has the same body.(ï­£Ä
-U
-squid:S106Š"9Replace this use of System.out or System.err by a logger.(Ñ£±Ôúÿÿÿÿ
+“
+java:S1319¸"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(‰íŞƒşÿÿÿÿ8šä‹ªƒ/
+“
+java:S1319´"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(˜©­üÿÿÿÿ8šä‹ªƒ/
+a
+java:S2147$"DCombine this catch with the one at line 34, which has the same body.(ï­£Ä8ñßÏ©ƒ/
+a
+java:S2147V"DCombine this catch with the one at line 84, which has the same body.(ï­£Ä8šä‹ªƒ/
+:
+java:S1643"Use a StringBuilder instead.(ŠÑ‡à8šä‹ªƒ/

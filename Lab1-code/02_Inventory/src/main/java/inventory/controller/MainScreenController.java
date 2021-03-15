@@ -29,12 +29,9 @@ import java.util.ResourceBundle;
 public class MainScreenController implements Initializable,Controller {
     
      // Declare fields
-    private Stage stage;
-    private Parent scene;
-    private static Part modifyPart;
-    private static Product modifyProduct;
     private static int modifyPartIndex;
     private static int modifyProductIndex;
+    private static final  String FIRST ="Confirm Exit";
     
     // Declare methods
     public static int getModifyPartIndex() {
@@ -90,7 +87,6 @@ public class MainScreenController implements Initializable,Controller {
     @FXML
     private TextField productsSearchTxt;
 
-    public MainScreenController(){}
 
     public void setService(InventoryService service){
         this.service=service;
@@ -104,7 +100,6 @@ public class MainScreenController implements Initializable,Controller {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println(rb);
         // Populate parts table view
         partsIdCol.setCellValueFactory(new PropertyValueFactory<>("partId"));
         partsNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -127,9 +122,10 @@ public class MainScreenController implements Initializable,Controller {
      * @throws IOException
      */
     private void displayScene(ActionEvent event, String source) throws IOException {
+        Stage stage;
+        Parent scene;
         stage = (Stage)((Button)event.getSource()).getScene().getWindow();
         FXMLLoader loader= new FXMLLoader(getClass().getResource(source));
-        //scene = FXMLLoader.load(getClass().getResource(source));
         scene = loader.load();
         Controller ctrl=loader.getController();
         ctrl.setService(service);
@@ -152,11 +148,8 @@ public class MainScreenController implements Initializable,Controller {
         alert.setContentText("Are you sure you want to delete part " + part.getName() + " from parts?");
         Optional<ButtonType> result = alert.showAndWait();
 
-        if (result.get() == ButtonType.OK) {
-            System.out.println("Part deleted.");
+        if (result.isPresent() && result.get() == ButtonType.OK) {
             service.deletePart(part);
-        } else {
-            System.out.println("Canceled part deletion.");
         }
     }
 
@@ -175,11 +168,8 @@ public class MainScreenController implements Initializable,Controller {
         alert.setContentText("Are you sure you want to delete product " + product.getName() + " from products?");
         Optional<ButtonType> result = alert.showAndWait();
         
-        if (result.get() == ButtonType.OK) {
+        if (result.isPresent() && result.get() == ButtonType.OK) {
             service.deleteProduct(product);
-            System.out.println("Product " + product.getName() + " was removed.");
-        } else {
-            System.out.println("Product " + product.getName() + " was not removed.");
         }
     }
 
@@ -211,9 +201,7 @@ public class MainScreenController implements Initializable,Controller {
      */
     @FXML
     void handleModifyPart(ActionEvent event) throws IOException {
-        modifyPart = partsTableView.getSelectionModel().getSelectedItem();
-
-        System.out.println(modifyPart);
+        Part modifyPart = partsTableView.getSelectionModel().getSelectedItem();
         if(modifyPart != null) {
             modifyPartIndex = service.getAllParts().indexOf(modifyPart);
             displayScene(event, "/fxml/ModifyPart.fxml");
@@ -222,8 +210,8 @@ public class MainScreenController implements Initializable,Controller {
         {
             Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.initModality(Modality.NONE);
-            alert.setTitle("Confirmation Needed");
-            alert.setHeaderText("Confirm Exit");
+            alert.setTitle(FIRST);
+            alert.setHeaderText(FIRST);
             alert.setContentText("You need to select an part?");
             alert.show();
 
@@ -237,7 +225,7 @@ public class MainScreenController implements Initializable,Controller {
      */
     @FXML
     void handleModifyProduct(ActionEvent event) throws IOException {
-        modifyProduct = productsTableView.getSelectionModel().getSelectedItem();
+        Product modifyProduct = productsTableView.getSelectionModel().getSelectedItem();
         if(modifyProduct != null) {
             modifyProductIndex = service.getAllProducts().indexOf(modifyProduct);
             displayScene(event, "/fxml/ModifyProduct.fxml");
@@ -246,7 +234,7 @@ public class MainScreenController implements Initializable,Controller {
             Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.initModality(Modality.NONE);
             alert.setTitle("Confirmation Needed");
-            alert.setHeaderText("Confirm Exit");
+            alert.setHeaderText(FIRST);
             alert.setContentText("You need to select an product?");
             alert.show();
 
@@ -262,14 +250,11 @@ public class MainScreenController implements Initializable,Controller {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.initModality(Modality.NONE);
         alert.setTitle("Confirmation Needed");
-        alert.setHeaderText("Confirm Exit");
+        alert.setHeaderText(FIRST);
         alert.setContentText("Are you sure you want to exit?");
         Optional<ButtonType> result = alert.showAndWait();
-        if(result.get() == ButtonType.OK) {
-            System.out.println("Ok selected. Program exited");
+        if (result.isPresent() && result.get() == ButtonType.OK) {
             System.exit(0);
-        } else {
-            System.out.println("Cancel clicked.");
         }
     }
 

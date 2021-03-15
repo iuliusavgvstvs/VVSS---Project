@@ -24,16 +24,13 @@ public class InventoryRepository {
 		ClassLoader classLoader = InventoryRepository.class.getClassLoader();
 		File file = new File(classLoader.getResource(filename).getFile());
 		ObservableList<Part> listP = FXCollections.observableArrayList();
-		BufferedReader br = null;
-		try {
-			br = new BufferedReader(new FileReader(file));
+		try(BufferedReader br = new BufferedReader(new FileReader(file));) {
 			String line = null;
 			while((line=br.readLine())!=null){
 				Part part=getPartFromString(line);
 				if (part!=null)
 					listP.add(part);
 			}
-			br.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -77,16 +74,13 @@ public class InventoryRepository {
 		File file = new File(classLoader.getResource(filename).getFile());
 
 		ObservableList<Product> listP = FXCollections.observableArrayList();
-		BufferedReader br = null;
-		try {
-			br = new BufferedReader(new FileReader(file));
+		try(BufferedReader br = new BufferedReader(new FileReader(file));) {
 			String line = null;
 			while((line=br.readLine())!=null){
 				Product product=getProductFromString(line);
 				if (product!=null)
 					listP.add(product);
 			}
-			br.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -117,8 +111,7 @@ public class InventoryRepository {
 				for (Part part:inventory.lookupPartById(Integer.parseInt(idP))) {
 					if (part != null)
 						list.add(part);
-				} ;
-
+				}
 			}
 			product = new Product(id, name, price, inStock, minStock, maxStock, list);
 			product.setAssociatedParts(list);
@@ -131,14 +124,11 @@ public class InventoryRepository {
 		ClassLoader classLoader = InventoryRepository.class.getClassLoader();
 		File file = new File(classLoader.getResource(filename).getFile());
 
-		BufferedWriter bw = null;
 		ObservableList<Part> parts=inventory.getAllParts();
 		ObservableList<Product> products=inventory.getProducts();
 
-		try {
-			bw = new BufferedWriter(new FileWriter(file));
+		try(BufferedWriter bw = new BufferedWriter(new FileWriter(file));) {
 			for (Part p:parts) {
-				System.out.println(p.toString());
 				bw.write(p.toString());
 				bw.newLine();
 			}
@@ -156,7 +146,6 @@ public class InventoryRepository {
 				bw.write(line);
 				bw.newLine();
 			}
-			bw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

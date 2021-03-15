@@ -21,11 +21,7 @@ import java.util.ResourceBundle;
 public class AddPartController implements Initializable, Controller {
     
     // Declare fields
-    private Stage stage;
-    private Parent scene;
     private boolean isOutsourced = true;
-    private String errorMessage = new String();
-    private int partId;
 
     private InventoryService service;
     
@@ -59,7 +55,6 @@ public class AddPartController implements Initializable, Controller {
     @FXML
     private TextField minTxt;
 
-    public AddPartController(){}
 
     @Override
     public void setService(InventoryService service){
@@ -82,9 +77,10 @@ public class AddPartController implements Initializable, Controller {
      */
     @FXML
     private void displayScene(ActionEvent event, String source) throws IOException {
+        Stage stage;
+        Parent scene;
         stage = (Stage)((Button)event.getSource()).getScene().getWindow();
         FXMLLoader loader= new FXMLLoader(getClass().getResource(source));
-        //scene = FXMLLoader.load(getClass().getResource(source));
         scene = loader.load();
         Controller ctrl=loader.getController();
         ctrl.setService(service);
@@ -106,11 +102,8 @@ public class AddPartController implements Initializable, Controller {
         alert.setHeaderText("Confirm Cancelation");
         alert.setContentText("Are you sure you want to cancel adding part?");
         Optional<ButtonType> result = alert.showAndWait();
-        if(result.get() == ButtonType.OK) {
-            System.out.println("Ok selected. Part addition canceled.");
+        if(result.isPresent() &&result.get() == ButtonType.OK) {
             displayScene(event, "/fxml/MainScreen.fxml");
-        } else {
-            System.out.println("Cancel clicked.");
         }
     }
 
@@ -150,7 +143,7 @@ public class AddPartController implements Initializable, Controller {
         String min = minTxt.getText();
         String max = maxTxt.getText();
         String partDynamicValue = addPartDynamicTxt.getText();
-        errorMessage = "";
+        String errorMessage = "";
         
         try {
             errorMessage = Part.isValidPart(name, Double.parseDouble(price), Integer.parseInt(inStock), Integer.parseInt(min), Integer.parseInt(max), errorMessage);
@@ -161,7 +154,7 @@ public class AddPartController implements Initializable, Controller {
                 alert.setContentText(errorMessage);
                 alert.showAndWait();
             } else {
-               if(isOutsourced == true) {
+               if(isOutsourced) {
                     service.addOutsourcePart(name, Double.parseDouble(price), Integer.parseInt(inStock), Integer.parseInt(min), Integer.parseInt(max), partDynamicValue);
                 } else {
                     service.addInhousePart(name, Double.parseDouble(price), Integer.parseInt(inStock), Integer.parseInt(min), Integer.parseInt(max), Integer.parseInt(partDynamicValue));
@@ -170,7 +163,6 @@ public class AddPartController implements Initializable, Controller {
             }
             
         } catch (NumberFormatException e) {
-            System.out.println("Form contains blank field.");
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error Adding Part!");
             alert.setHeaderText("Error!");

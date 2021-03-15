@@ -1,5 +1,4 @@
 
-T
-squid:S106"9Replace this use of System.out or System.err by a logger.(ïÚŠÈùÿÿÿÿ
-O
-squid:S106"9Replace this use of System.out or System.err by a logger.(µÊ†Ô
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(Ù¾‘•ûÿÿÿÿ8Â¬ğƒ/
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(ïÚŠÈùÿÿÿÿ8Â¬ğƒ/
+U	java:S106"9Replace this use of System.out or System.err by a logger.(µÊ†Ô8Â¬ğƒ/
