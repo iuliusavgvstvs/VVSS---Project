@@ -29,3 +29,5 @@ o
 .src/main/java/inventory/model/InhousePart.java,6\6\66f68dc77d37d8374d575a22cff106c783fe7fc9
 a
 1src/main/java/inventory/model/OutsourcedPart.java,d\f\df0af9f23528c297ca223e6f68423787a591d8d7
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
