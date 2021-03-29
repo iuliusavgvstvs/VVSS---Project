@@ -1,6 +1,0 @@
-
-X	java:S107?"<Method has 8 parameters, which is greater than 7 authorized.(¥Á¥±8†¼¼ì‡/
-g	java:S112""FDefine and throw a dedicated exception instead of using a generic one.(áëÁ¦øÿÿÿÿ8Îàší‡/
-W	java:S107:"<Method has 8 parameters, which is greater than 7 authorized.(çÄû"8†¼¼ì‡/
-W	java:S1075"<Method has 8 parameters, which is greater than 7 authorized.(²ÅÓ78†¼¼ì‡/
-g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(€Ñª·ıÿÿÿÿ8ñşší‡/
