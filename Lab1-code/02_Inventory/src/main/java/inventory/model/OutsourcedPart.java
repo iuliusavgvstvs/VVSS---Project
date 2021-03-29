@@ -12,7 +12,6 @@ public class OutsourcedPart extends Part {
         super(partId, name, price, inStock, min, max);
         this.companyName = companyName;
     }
-    public String getMachineId() { return "";}
     
     // Getter
     public String getCompanyName() {

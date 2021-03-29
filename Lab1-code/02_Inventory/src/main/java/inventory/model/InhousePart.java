@@ -16,10 +16,6 @@ public class InhousePart extends Part {
     public int getMachineId() {
         return machineId;
     }
-
-    public String getCompanyName() {
-        return "";
-    }
     
     // Setter
     public void setMachineId(int machineId) {

@@ -4,8 +4,6 @@ package inventory.model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
-
 public class Inventory {
     
     // Declare fields
@@ -45,20 +43,17 @@ public class Inventory {
      * @param searchItem
      * @return 
      */
-    public ArrayList<Product> lookupProduct(String searchItem) {
+    public Product lookupProduct(String searchItem) {
         boolean isFound = false;
-        ArrayList<Product> results = new ArrayList<>();
         for(Product p: products) {
-            if(p.getName().contains(searchItem) || (p.getProductId()+"").equals(searchItem)){
-                results.add(p);
-            }
+            if(p.getName().contains(searchItem) || (p.getProductId()+"").equals(searchItem)) return p;
             isFound = true;
         }
-        if(!isFound) {
+        if(isFound == false) {
             Product product = new Product(0, null, 0.0, 0, 0, 0, null);
-            results.add(product);
+            return product;
         }
-        return results;
+        return null;
     }
     
     /**
@@ -103,22 +98,11 @@ public class Inventory {
      * @param searchItem
      * @return 
      */
-    public ArrayList<Part> lookupPart(String searchItem) {
-        ArrayList<Part> results = new ArrayList<>();
+    public Part lookupPart(String searchItem) {
         for(Part p:allParts) {
-            if(p.getName().contains(searchItem) || (p.getPartId()+"").equals(searchItem))
-                results.add(p);
+            if(p.getName().contains(searchItem) || (p.getPartId()+"").equals(searchItem)) return p;
         }
-        return results;
-    }
-
-    public ArrayList<Part> lookupPartById(int searchItemId) {
-        ArrayList<Part> results = new ArrayList<>();
-        for(Part p:allParts) {
-            if(p.getPartId() == searchItemId )
-                results.add(p);
-        }
-        return results;
+        return null;
     }
     
     /**

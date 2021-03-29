@@ -14,7 +14,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        System.out.println(Main.class.getResource("data/items.txt"));
         InventoryRepository repo= new InventoryRepository();
         InventoryService service = new InventoryService(repo);
         System.out.println(service.getAllProducts());

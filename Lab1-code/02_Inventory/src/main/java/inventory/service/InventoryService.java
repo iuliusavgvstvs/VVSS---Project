@@ -4,8 +4,6 @@ import inventory.model.*;
 import inventory.repository.InventoryRepository;
 import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
-
 public class InventoryService {
 
     private InventoryRepository repo;
@@ -25,9 +23,15 @@ public class InventoryService {
         repo.addPart(outsourcedPart);
     }
 
-    public void addProduct(String name, double price, int inStock, int min, int  max, ObservableList<Part> addParts){
-        Product product = new Product(repo.getAutoProductId(), name, price, inStock, min, max, addParts);
-        repo.addProduct(product);
+    public Product addProduct(String name, double price, int inStock, int min, int  max, ObservableList<Part> addParts) throws Exception {
+        String errorMessage = "";
+        errorMessage = Product.isValidProduct(name, price ,inStock ,min, max, addParts, errorMessage);
+        if(errorMessage.equals("")) {
+            Product product = new Product(repo.getAutoProductId(), name, price, inStock, min, max, addParts);
+            repo.addProduct(product);
+            return product;
+        }else
+            throw new Exception(errorMessage);
     }
 
     public ObservableList<Part> getAllParts() {
@@ -38,11 +42,11 @@ public class InventoryService {
         return repo.getAllProducts();
     }
 
-    public ArrayList<Part> lookupPart(String search) {
+    public Part lookupPart(String search) {
         return repo.lookupPart(search);
     }
 
-    public ArrayList<Product> lookupProduct(String search) {
+    public Product lookupProduct(String search) {
         return repo.lookupProduct(search);
     }
 
