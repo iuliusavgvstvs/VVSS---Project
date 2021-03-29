@@ -188,7 +188,7 @@ public class AddProductController implements Initializable, Controller {
      * @throws IOException
      */
     @FXML
-    void handleSaveProduct(ActionEvent event) throws IOException {
+    void handleSaveProduct(ActionEvent event) throws Exception {
         String name = nameTxt.getText();
         String price = priceTxt.getText();
         String inStock = inventoryTxt.getText();
