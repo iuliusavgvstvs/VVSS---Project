@@ -1,6 +1,10 @@
 
-X	java:S107?"<Method has 8 parameters, which is greater than 7 authorized.(¥Á¥±8†¼¼ì‡/
-g	java:S112""FDefine and throw a dedicated exception instead of using a generic one.(áëÁ¦øÿÿÿÿ8Îàší‡/
-W	java:S107:"<Method has 8 parameters, which is greater than 7 authorized.(çÄû"8†¼¼ì‡/
-W	java:S1075"<Method has 8 parameters, which is greater than 7 authorized.(²ÅÓ78†¼¼ì‡/
-g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(€Ñª·ıÿÿÿÿ8ñşší‡/
+’
+java:S13193"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(‰íŞƒşÿÿÿÿ8Ù–‘ªƒ/
+W	java:S1077"<Method has 8 parameters, which is greater than 7 authorized.(²ÅÓ78Ù–‘ªƒ/
+X	java:S107A"<Method has 8 parameters, which is greater than 7 authorized.(¥Á¥±8Ù–‘ªƒ/
+W	java:S107<"<Method has 8 parameters, which is greater than 7 authorized.(çÄû"8Ù–‘ªƒ/
+’
+java:S1319/"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(˜©­üÿÿÿÿ8Ù–‘ªƒ/
+g	java:S112$"FDefine and throw a dedicated exception instead of using a generic one.(áëÁ¦øÿÿÿÿ8¿Ë¡ğ‡/
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(€Ñª·ıÿÿÿÿ8¿Ë¡ğ‡/

@@ -1,0 +1,9 @@
+
+Q
+java:S1128"/Remove this unused import 'java.sql.SQLOutput'.(ê¤òÃùÿÿÿÿ8ÍÓ¦ğ‡/
+o	java:S100*"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ª´óüÿÿÿÿ8ÍÓ¦ğ‡/
+X
+java:S1854,"6Remove this useless assignment to local variable "id".(ôÍï…ıÿÿÿÿ8ÍÓ¦ğ‡/
+]	java:S125@"<This block of commented-out lines of code should be removed.(ÆÚ­Ùúÿÿÿÿ8ÍÓ¦ğ‡/
+I
+java:S1481,"'Remove this unused "id" local variable.(ôÍï…ıÿÿÿÿ8ÍÓ¦ğ‡/

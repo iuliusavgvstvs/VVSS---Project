@@ -1,5 +1,7 @@
 
-K
-java:S11254")Remove the literal "false" boolean value.(ĞÏŸşÿÿÿÿ8¼¼ì‡/
-
-java:S14885"_Immediately return this expression instead of assigning it to the temporary variable "product".(¨şÛ¿ùÿÿÿÿ8¼¼ì‡/
+
+java:S1319s"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Éğ‘ì8†ïÍ©ƒ/
+
+java:S1319j"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ñÁ¥Ö8†ïÍ©ƒ/
+
+java:S13190"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".( Òñ»8´¸Ğ©ƒ/

@@ -4,6 +4,8 @@ import inventory.model.*;
 import inventory.repository.InventoryRepository;
 import javafx.collections.ObservableList;
 
+import java.util.ArrayList;
+
 public class InventoryService {
 
     private InventoryRepository repo;
@@ -42,11 +44,11 @@ public class InventoryService {
         return repo.getAllProducts();
     }
 
-    public Part lookupPart(String search) {
+    public ArrayList<Part> lookupPart(String search) {
         return repo.lookupPart(search);
     }
 
-    public Product lookupProduct(String search) {
+    public ArrayList<Product> lookupProduct(String search) {
         return repo.lookupProduct(search);
     }
 
