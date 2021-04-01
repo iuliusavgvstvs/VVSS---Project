@@ -11,7 +11,7 @@ public class InventoryService {
     private InventoryRepository repo;
 
     public InventoryService(InventoryRepository repo){
-        this.repo =repo;
+        this.repo = repo;
     }
 
 

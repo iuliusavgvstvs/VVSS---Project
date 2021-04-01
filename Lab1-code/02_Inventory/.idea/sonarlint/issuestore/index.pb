@@ -29,5 +29,3 @@ o
 .src/main/java/inventory/model/InhousePart.java,6\6\66f68dc77d37d8374d575a22cff106c783fe7fc9
 a
 1src/main/java/inventory/model/OutsourcedPart.java,d\f\df0af9f23528c297ca223e6f68423787a591d8d7
-i
-9src/main/java/inventory/service/InventoryServiceTest.java,a\1\a1da2d965821ea1c901dc82f766a74535000eeee

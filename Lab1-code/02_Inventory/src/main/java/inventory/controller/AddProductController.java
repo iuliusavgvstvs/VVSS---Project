@@ -188,7 +188,7 @@ public class AddProductController implements Initializable, Controller {
      * @throws IOException
      */
     @FXML
-    void handleSaveProduct(ActionEvent event) throws Exception {
+    void handleSaveProduct(ActionEvent event) throws IOException {
         String name = nameTxt.getText();
         String price = priceTxt.getText();
         String inStock = inventoryTxt.getText();
@@ -214,6 +214,8 @@ public class AddProductController implements Initializable, Controller {
             alert.setHeaderText("Error!");
             alert.setContentText("Form contains blank field.");
             alert.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
