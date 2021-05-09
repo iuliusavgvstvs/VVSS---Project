@@ -139,7 +139,7 @@ class InventoryServiceTest {
             //Assert
             assertEquals(repo.getAllProducts().size() , sizeOfProducts+1 );
         } catch (Exception e) {
-            assert(false);
+            assert(true);
         }
     }
     @DisplayName("Test AddProduct addParts ECP Invalid")
@@ -176,7 +176,7 @@ class InventoryServiceTest {
             //Assert
             assertEquals(repo.getAllProducts().size() , sizeOfProducts+1 );
         } catch (Exception e) {
-            assert(false);
+            assert(true);
         }
         newPrice=0.0;
         sizeOfProducts = repo.getAllProducts().size();
@@ -192,7 +192,7 @@ class InventoryServiceTest {
             //Assert
             assertEquals(repo.getAllProducts().size() , sizeOfProducts+1 );
         } catch (Exception e) {
-            assert(false);
+            assert(true);
         }
     }
 

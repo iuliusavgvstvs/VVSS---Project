@@ -1,15 +1,10 @@
 package inventory.model;
 
-import inventory.repository.InventoryRepository;
-import inventory.service.InventoryService;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class InventoryTest {
     private static final List<Part> partList = new ArrayList<>();

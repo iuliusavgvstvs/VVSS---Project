@@ -19,6 +19,13 @@ public class InventoryRepository {
 		readParts();
 		readProducts();
 	}
+	public InventoryRepository(boolean isEmpty){
+		this.inventory = new Inventory();
+		if(!isEmpty) {
+			readParts();
+			readProducts();
+		}
+	}
 
 	public void readParts(){
 		ClassLoader classLoader = InventoryRepository.class.getClassLoader();
